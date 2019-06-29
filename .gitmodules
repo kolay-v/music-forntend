@@ -1,0 +1,3 @@
+[submodule "react.js-voice-audio-player"]
+	path = react.js-voice-audio-player
+	url = git@github.com:abitlog/react.js-voice-audio-player.git
