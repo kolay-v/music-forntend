@@ -24,6 +24,8 @@ export default (state = defaultState, action) => {
       index = state.repeat ? 0 : null
     }
     return { ...state, index }
+  } if (action.type === 'NEW_TIME') {
+    return { ...state, time: action.time }
   } if (action.type === 'PLAY_BACK') {
     if (state.index === null) return state
     if (state.index === 0) {
