@@ -24,6 +24,8 @@ export default (state = defaultState, action) => {
       index = state.repeat ? 0 : null
     }
     return { ...state, index }
+  } if (action.type === 'CHANGE_PAUSE_STATE') {
+    return { ...state, pause: action.pause }
   } if (action.type === 'NEW_TIME') {
     return { ...state, time: action.time }
   } if (action.type === 'PLAY_BACK') {
@@ -41,7 +43,6 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       index,
-      pause: false,
       time: 0
     }
   }

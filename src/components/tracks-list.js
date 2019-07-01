@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import Progress from '@material-ui/core/CircularProgress'
 import playTrack from '../actions/play-new-playlist'
 import List from '@material-ui/core/List'
-import Item from '@material-ui/core/ListItem'
 import Track from './track'
 
 export default () => {
@@ -17,11 +16,13 @@ export default () => {
   return (
     <List> {
       tracks.map((track, i) => {
-        const current = currentTrack && currentTrack.id === track.id
+        const { id } = track
+        const current = currentTrack && currentTrack.id === id
         return (
           <Track
+            key={id}
             onPlay={() => dispatch(playTrack(tracks, i))}
-            current={current}
+            current={Boolean(current)}
             track={track}
           />
         )
