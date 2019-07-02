@@ -2,9 +2,9 @@ export default q => (dispatch, getState) => {
   dispatch({ type: 'START_LOAD', q })
   const url = new URL('https://vk.e-toolz.cf/vk/search')
   url.search = new URLSearchParams({
-    q, count: 200, offset: 0
+    q, count: 2, offset: 0
   })
- 	fetch(url, { method: 'GET' }).then(r => {
+  fetch(url, { method: 'GET' }).then(r => {
     if (r.ok) return r.json()
     throw new Error('aa')
   }).then(result => {
