@@ -15,13 +15,14 @@ const LazyLoad = ({ onNeedLoadMore, placeholder, offset }) => {
       visible && onNeedLoadMore()
       return visible
     }
-    if (update()) return
-    window.addEventListener('scroll', update)
-    window.addEventListener('resize', update)
-    return () => {
+    const unlisten = () => {
       window.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
     }
+    if (update()) return unlisten()
+    window.addEventListener('scroll', update)
+    window.addEventListener('resize', update)
+    return unlisten
   })
   return (
     <div ref={ref}>{placeholder}</div>

@@ -7,7 +7,7 @@ import Track from './track'
 
 export default () => {
   const dispatch = useDispatch()
-  const tracks = useSelector(state => state.search.tracks)
+  const tracks = useSelector(state => state.search.tracks[state.search.q] || [])
   const loading = useSelector(state => state.search.loading)
   const playingIndex = useSelector(state => state.player.index)
   const currentTrack = useSelector(state => state.player.playlist)[playingIndex]

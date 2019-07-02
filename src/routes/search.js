@@ -11,6 +11,7 @@ export default () => {
     <>
       <TextField value={q} onChange={e => dispatch(search(e.target.value))} label='Track name' />
       <TracksList />
+      <button onClick={() => dispatch(search())}>more</button>
     </>
   )
 }

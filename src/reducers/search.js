@@ -1,7 +1,7 @@
 const defaultState = {
   loading: 'loaded',
   q: '',
-  tracks: []
+  tracks: { '': [] }
 }
 
 export default (state = defaultState, action) => {
@@ -16,10 +16,14 @@ export default (state = defaultState, action) => {
       const loading = action.error ? 'error' : 'loaded'
       return { ...state, loading }
     }
-    case 'NEW_SEARCH_RESULT':
-      return { ...state, tracks: action.result }
+    case 'NEW_SEARCH_RESULT': {
+      const tracks = { ...state.tracks }
+      tracks[action.q] = action.result
+      return { ...state, tracks }
+    }
     case 'LOADED_MORE': {
-      const tracks = [ ...state.tracks, ...action.result ]
+      const tracks = { ...state.tracks }
+      tracks[state.q] = [ ...tracks[state.q], ...action.result ]
       return { ...state, tracks }
     }
     default:
