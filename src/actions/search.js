@@ -1,7 +1,8 @@
 export default (q, more = false) => (dispatch, getState) => {
+  let state = getState()
+  const { tracks } = state.search
+  if (!q) q = state.search.q
   dispatch({ type: 'START_LOAD', q })
-  const { tracks } = getState().search
-  q = q || getState(q)
   const oldTracks = tracks[q]
   if (oldTracks && !more) return dispatch({ type: 'LOAD_END', error: false })
   let offset = Number(more && oldTracks && oldTracks.length)
@@ -11,9 +12,10 @@ export default (q, more = false) => (dispatch, getState) => {
   })
   fetch(url, { method: 'GET' }).then(r => {
     if (r.ok) return r.json()
-    throw new Error('aa')
+    throw new Error('Error while fetching tracks')
   }).then(result => {
-    dispatch({ type: 'NEW_SEARCH_RESULT', result, q })
+    const type = offset ? 'LOADED_MORE' : 'NEW_SEARCH_RESULT'
+    dispatch({ type, result, q })
     return getState().search.q === q ? false : null
   })
     .catch(() => console.error || true)
