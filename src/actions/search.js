@@ -2,7 +2,8 @@ export default (q, more = false) => (dispatch, getState) => {
   let state = getState()
   const { tracks } = state.search
   if (q === null) q = state.search.q
-  dispatch({ type: 'START_LOAD', q })
+  else dispatch({ type: 'CHANGE_QUERY', q })
+  dispatch({ type: 'START_LOAD' })
   const oldTracks = tracks[q]
   if (oldTracks && !more) return dispatch({ type: 'LOAD_END', error: false })
   let offset = Number(more && oldTracks && oldTracks.length)
@@ -18,7 +19,7 @@ export default (q, more = false) => (dispatch, getState) => {
     dispatch({ type, result, q })
     return getState().search.q === q ? false : null
   })
-    .catch(() => console.error || true)
+    .catch(e => console.error(e) || true)
     .then(error => error !== null &&
       dispatch({ type: 'LOAD_END', error }))
 }

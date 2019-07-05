@@ -8,13 +8,14 @@ describe('test search dispatcher', () => {
   afterEach(() => {
     fetch.resetMocks()
   })
-  it('dispatch start loading', () => {
+  it('dispatch start loading and change query', () => {
     fetch.mockResponse(JSON.stringify([ ]))
     const store = mockStore({ search: { q: 'a', tracks: [] } })
     const q = 'test'
     store.dispatch(search(q))
       .then(() => {
-        expect(store.getActions()[0]).toEqual({ type: 'START_LOAD', q })
+        expect(store.getActions()[1]).toEqual({ type: 'START_LOAD' })
+        expect(store.getActions()[0]).toEqual({ type: 'CHANGE_QUERY', q })
       })
   })
 })
