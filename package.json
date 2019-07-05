@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": false,
   "license": "MIT",
   "dependencies": {
@@ -12,7 +12,6 @@
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-scripts": "3.0.1",
-    "reduce-reducers": "^1.0.4",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
@@ -29,17 +28,16 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.5% in RU",
-      "not dead"
-    ],
+    "production": ["> 0.5% in UA and > 0.5% in RU"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version"
     ]
   },
   "devDependencies": {
+    "@types/jest": "^24.0.15",
     "@types/react-redux": "^7.1.0",
+    "@types/redux-mock-store": "^1.0.1",
     "eslint": "5.16.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-config-standard-react": "^7.0.2",
@@ -47,6 +45,8 @@
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.14.2",
-    "eslint-plugin-standard": "^4.0.0"
+    "eslint-plugin-standard": "^4.0.0",
+    "jest-fetch-mock": "^2.1.2",
+    "redux-mock-store": "^1.5.3"
   }
 }

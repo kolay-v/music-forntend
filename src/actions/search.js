@@ -1,7 +1,7 @@
 export default (q, more = false) => (dispatch, getState) => {
   let state = getState()
   const { tracks } = state.search
-  if (!q) q = state.search.q
+  if (q === null) q = state.search.q
   dispatch({ type: 'START_LOAD', q })
   const oldTracks = tracks[q]
   if (oldTracks && !more) return dispatch({ type: 'LOAD_END', error: false })
@@ -10,7 +10,7 @@ export default (q, more = false) => (dispatch, getState) => {
   url.search = new URLSearchParams({
     q, count: 2, offset
   })
-  fetch(url, { method: 'GET' }).then(r => {
+  return fetch(url, { method: 'GET' }).then(r => {
     if (r.ok) return r.json()
     throw new Error('Error while fetching tracks')
   }).then(result => {

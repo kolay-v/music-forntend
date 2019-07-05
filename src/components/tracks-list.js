@@ -11,22 +11,24 @@ export default () => {
   const loading = useSelector(state => state.search.loading)
   const playingIndex = useSelector(state => state.player.index)
   const currentTrack = useSelector(state => state.player.playlist)[playingIndex]
-  if (loading === 'errpr') return <p>Error</p>
-  if (loading === 'loading') return <Progress />
+  if (loading === 'error') return <p>Error</p>
   return (
-    <List> {
-      tracks.map((track, i) => {
-        const { id } = track
-        const current = currentTrack && currentTrack.id === id
-        return (
-          <Track
-            key={id}
-            onPlay={() => dispatch(playTrack(tracks, i))}
-            current={Boolean(current)}
-            track={track}
-          />
-        )
-      })
-    } </List>
+    <>
+      <List component='div'> {
+        tracks.map((track, i) => {
+          const { id } = track
+          const current = currentTrack && currentTrack.id === id
+          return (
+            <Track
+              key={id}
+              onPlay={() => dispatch(playTrack(tracks, i))}
+              current={Boolean(current)}
+              track={track}
+            />
+          )
+        })
+      } </List>
+      { loading === 'loading' && <Progress /> }
+    </>
   )
 }
