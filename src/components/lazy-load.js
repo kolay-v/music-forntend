@@ -1,28 +1,26 @@
 import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 
+export const isVisible = (node) => {
+  const { top, height: elementHeight } = node.getBoundingClientRect()
+  const windowInnerHeight = window.innerHeight || document.documentElement.clientHeight
+  const visible = (top <= windowInnerHeight) &&
+    (top + elementHeight >= 0)
+  return visible
+}
+
 const LazyLoad = ({ onNeedLoadMore, placeholder, offset }) => {
   const ref = useRef()
+  const update = () => isVisible(ref.current) && (onNeedLoadMore() || true)
   useEffect(() => {
-    const update = () => {
-      const { current: node } = ref
-      const { top, height: elementHeight } = node.getBoundingClientRect()
-      const windowInnerHeight = window.innerHeight || document.documentElement.clientHeight
-
-      const offsets = [offset, offset]
-      const visible = (top - offsets[0] <= windowInnerHeight) &&
-      (top + elementHeight + offsets[1] >= 0)
-      visible && onNeedLoadMore()
-      return visible
-    }
-    const unlisten = () => {
+    const stopListening = () => {
       window.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
     }
-    if (update()) return unlisten()
+    if (update()) return stopListening()
     window.addEventListener('scroll', update)
     window.addEventListener('resize', update)
-    return unlisten
+    return stopListening
   })
   return (
     <div ref={ref}>{placeholder}</div>

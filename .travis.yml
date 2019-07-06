@@ -8,4 +8,6 @@ deploy:
   project: kolay-e7d50
   token:
     secure: "wU06Bqx9GSsmaKiGsqxitAZRiN1m8Jh0wTm3byCxQK4Rtn/URM3Mv5lAVaxDqtkrFmzPi+9wGKVkGCGveJIVGbjhd/MxY7OXMpz0E2JRaw2+cY8M5L+Qn/uzyNcVQCY9DcE0JZKJmG6BBB2K8fuU+aImMlI7loClbnuirUezwyqjsftW4MKUDLDUtV+eFwhnWRkZPEFRqidt50xRfpQcjq8X3frxyiQzqCttR8bYdE0FK++xsVZJsItuwWT97sPnjva0lMLw5H8ieOJFbVzK9JIdehL7FSPpQ8AgB1x2L6xOCfGpsOY7V63I0kLdHy4PPvpD+Xiv28XtpIUzUM80cHDdImqXsVBL1p/1h+kYqQelbPL/LSeBpkDoSAFs1ENggOG5jbs2W9mxa5PyUBzkzhXvt6hublwUBIHrqDLRvahe6dz+Yl3YUfTiNs2rjp5kqzPCTDAWLHMmspSxr5DHn2KSUUrjVigwUTcw6W6m+WtKnDtkuzGZ5HFs/WdR4IfgLNafL06llfG3Qtork7VpiI/opdVSwe9fDJbRuDeCQVtD4zUpy57lDFP+kIFspiinHN/7FqJADwXfgExoWFL/IKUZuAIoeuYFSK/7fuN5GW9vRoZk2xx99uEWzC9ZejGYX8ex8mzJa9Il/8ZewvkT7C4FpIARDmWAP+HvgAZA5Oo="
-
+  on:
+    repo: kolay-v/music-forntend
+    tags: true
