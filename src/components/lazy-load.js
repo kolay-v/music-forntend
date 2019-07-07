@@ -4,9 +4,8 @@ import PropTypes from 'prop-types'
 export const isVisible = (node) => {
   const { top, height: elementHeight } = node.getBoundingClientRect()
   const windowInnerHeight = window.innerHeight || document.documentElement.clientHeight
-  const visible = (top <= windowInnerHeight) &&
+  return (top <= windowInnerHeight) &&
     (top + elementHeight >= 0)
-  return visible
 }
 
 const LazyLoad = ({ onNeedLoadMore, placeholder, offset }) => {

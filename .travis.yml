@@ -1,8 +1,8 @@
 language: node_js
 script:
-- yarn lint
-- yarn test:cover
-- yarn build
+  - yarn lint
+  - yarn test:cover
+  - yarn build
 deploy:
   provider: firebase
   project: kolay-e7d50
