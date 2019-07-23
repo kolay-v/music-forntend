@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import getCurrentTrack from '../utils/get-current-track'
-import Slider from '@material-ui/lab/Slider'
+import Slider from '@material-ui/core/Slider'
 import seek from '../actions/seek'
 
 export default () => {
