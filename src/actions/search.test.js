@@ -9,7 +9,7 @@ describe('test search dispatcher', () => {
     fetch.resetMocks()
   })
   it('dispatch start loading and change query', () => {
-    fetch.mockResponse(JSON.stringify([ ]))
+    fetch.mockResponse(JSON.stringify([]))
     const store = mockStore({ search: { q: 'a', tracks: [] } })
     const q = 'test'
     store.dispatch(search(q))

@@ -27,8 +27,9 @@ export default () => {
             />
           )
         })
-      } </List>
-      { loading === 'loading' && <Progress /> }
+      }
+      </List>
+      {loading === 'loading' && <Progress />}
     </>
   )
 }

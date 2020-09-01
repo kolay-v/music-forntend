@@ -7,7 +7,7 @@ export default (state = { '': [] }, action) => {
     }
     case 'LOADED_MORE': {
       const tracks = { ...state }
-      tracks[action.q] = [ ...tracks[action.q], ...action.result ]
+      tracks[action.q] = [...tracks[action.q], ...action.result]
       return tracks
     }
     default:

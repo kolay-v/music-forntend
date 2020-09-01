@@ -1,6 +1,6 @@
 import player from '../utils/player'
 
-export default () => (dispatch, getState) => {
+export default (back = false) => (dispatch, getState) => {
   /*
   if (state.index === null) return state
     let index = state.index + 1
@@ -22,7 +22,7 @@ export default () => (dispatch, getState) => {
   */
   const { playlist, index } = getState().player
   if (index === null) return
-  const newIndex = index + 1
+  const newIndex = index + (back ? -1 : 1)
   dispatch({ type: 'NEW_TIME', time: 0 })
   if (newIndex >= playlist.length) {
     dispatch({ type: 'CHANGE_INDEX', index: null })
