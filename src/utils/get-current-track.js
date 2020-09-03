@@ -4,7 +4,7 @@ export default (playlist, index) => {
     duration: 0,
     id: null,
     title: '',
-    artist: 0,
+    artist: '',
     url: ''
   }
 }

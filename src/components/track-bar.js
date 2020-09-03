@@ -20,7 +20,7 @@ import formatTime from '../utils/format-time'
 const SongName = ({ track, time }) => {
   return (
     <Grid item>
-      <Typography>{track.artist} - {track.title}</Typography>
+      <Typography>{track.artist}{track.artist && track.title && ' - '}{track.title}</Typography>
       <Typography>{formatTime(time)} / {formatTime(track.duration)}</Typography>
     </Grid>
   )
@@ -68,7 +68,8 @@ export default () => {
                 disabled={index === null}
                 onChange={(_, newValue) => dispatch(seek(newValue))}
                 valueLabelDisplay='auto'
-                valueLabelFormat={x => Math.floor(x).toString()}
+                // marks={[{ value: 30, label: 'loaded' }]}
+                valueLabelFormat={x => formatTime(x)}
               />
             </Grid>
             <Grid item>

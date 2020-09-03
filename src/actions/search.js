@@ -7,7 +7,6 @@ export default (q, more = false) => (dispatch, getState) => {
   const oldTracks = tracks[q]
   if (oldTracks && !more) return dispatch({ type: 'LOAD_END', error: false })
   const offset = Number(more && oldTracks && oldTracks.length)
-  console.log(process.env)
   const url = new URL(process.env.REACT_APP_TRACK_URL)
   url.search = new URLSearchParams({
     q, count: 20, offset

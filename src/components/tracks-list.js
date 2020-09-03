@@ -4,6 +4,8 @@ import Progress from '@material-ui/core/CircularProgress'
 import playTrack from '../actions/play-new-playlist'
 import List from '@material-ui/core/List'
 import Track from './track'
+import search from '../actions/search'
+import LazyLoad from './lazy-load'
 
 export default () => {
   const dispatch = useDispatch()
@@ -29,7 +31,10 @@ export default () => {
         })
       }
       </List>
-      {loading === 'loading' && <Progress />}
+      <LazyLoad
+        onNeedLoadMore={() => loading === 'loaded' && tracks.length && dispatch(search(null, true))}
+        placeholder={<Progress />}
+      />
     </>
   )
 }
